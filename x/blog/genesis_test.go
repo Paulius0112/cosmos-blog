@@ -14,7 +14,16 @@ func TestGenesis(t *testing.T) {
 	genesisState := types.GenesisState{
 		Params: types.DefaultParams(),
 
-		// this line is used by starport scaffolding # genesis/test/state
+		CommentList: []types.Comment{
+		{
+			Id: 0,
+		},
+		{
+			Id: 1,
+		},
+	},
+	CommentCount: 2,
+	// this line is used by starport scaffolding # genesis/test/state
 	}
 
 	k, ctx := keepertest.BlogKeeper(t)
@@ -25,5 +34,7 @@ func TestGenesis(t *testing.T) {
 	nullify.Fill(&genesisState)
 	nullify.Fill(got)
 
-	// this line is used by starport scaffolding # genesis/test/assert
+	require.ElementsMatch(t, genesisState.CommentList, got.CommentList)
+require.Equal(t, genesisState.CommentCount, got.CommentCount)
+// this line is used by starport scaffolding # genesis/test/assert
 }
