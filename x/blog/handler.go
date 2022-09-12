@@ -23,8 +23,8 @@ func NewHandler(k keeper.Keeper) sdk.Handler {
 			case *types.MsgCreateComment:
 					res, err := msgServer.CreateComment(sdk.WrapSDKContext(ctx), msg)
 					return sdk.WrapServiceResult(ctx, res, err)
-case *types.MsgCreateComment:
-					res, err := msgServer.CreateComment(sdk.WrapSDKContext(ctx), msg)
+			case *types.MsgDeleteComment:
+					res, err := msgServer.DeleteComment(sdk.WrapSDKContext(ctx), msg)
 					return sdk.WrapServiceResult(ctx, res, err)
 // this line is used by starport scaffolding # 1
 		default:

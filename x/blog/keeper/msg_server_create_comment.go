@@ -24,7 +24,7 @@ func (k msgServer) CreateComment(goCtx context.Context,  msg *types.MsgCreateCom
 		Body: msg.Body,
 		Title: msg.Title,
 		PostID: msg.PostID,
-		CreatedAt: ctx.BlockHeight()
+		CreatedAt: uint64(ctx.BlockHeight()),
 	}
 
 	if comment.CreatedAt > post.CreatedAt+100 {
@@ -34,6 +34,4 @@ func (k msgServer) CreateComment(goCtx context.Context,  msg *types.MsgCreateCom
 	id := k.AppendComment(ctx, comment)
 
 	return &types.MsgCreateCommentResponse{Id: id}, nil
-
-	return &types.MsgCreateCommentResponse{}, nil
 }
